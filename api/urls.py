@@ -16,6 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from api.ads import views
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('ads/', views.AdViewSet.as_view({
+        'get': 'list',
+        'post': 'create',
+        'put': 'update',
+        'delete': 'destroy'
+    }))
 ]
